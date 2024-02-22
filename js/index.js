@@ -113,14 +113,14 @@ function voiceRecognition() {
   }
 }
 
-// Trigger a vibration with the given duration.
+// Trigger a vibration with the given duration
  function triggerVibration(duration) {
   if ("vibrate" in navigator) {
     navigator.vibrate(duration);
     }
 }
 
-// Start navigation using the provided origin and destination.
+// Start navigation using the provided origin and destination
 function startNavigation() {
   var origin = document.getElementById('origin').value;
   var destination = document.getElementById('destination').value;
