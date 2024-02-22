@@ -1,23 +1,17 @@
 var map;
-
 var directionsService;
 var directionsRenderer;
-
-// Trexon step
 var currentStepIndex = 0;
 var destination;
 var userLocationMarker = null;
 
-
-// Arxikopoihsh map
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
-        center: new google.maps.LatLng(40.6401, 22.9444), // suntetagmenes Thessalonikis
+        center: new google.maps.LatLng(40.6401, 22.9444), // Coordinates of Thessaloniki
         zoom: 12
     });
 
     directionsService = new google.maps.DirectionsService();
-    //epeksergasia-style tou route
     directionsRenderer = new google.maps.DirectionsRenderer({
         polylineOptions: {
             strokeOpacity: 0,
@@ -28,18 +22,15 @@ function initMap() {
                     fillOpacity: 1.0,
                     strokeColor: '#0000FF',
                     strokeOpacity: 1.0,
-                    scale: 2 // megethos dots
+                    scale: 2 
                 },
                 offset: '0',
                 repeat: '10px' // suxnothta dots
             }]
         }
     });
-    console.log("DirectionsService and DirectionsRenderer initialized");
-
+    
     directionsRenderer.setMap(map);
-
-  // marker gia thn topothesia tou xrhsth
     userLocationMarker = new google.maps.Marker({
         map: map,
         icon: {
@@ -49,20 +40,17 @@ function initMap() {
         },
         title: "Your Location"
     });
-
-  // deikse ta input apo to allo html
+    
   displayInput();
 }
 
-//pass tis times twn inputs apo local storage 
 function displayInput() {
     var origin = localStorage.getItem('origin') || 'Not set'; //default not set
     destination = localStorage.getItem('destination') || 'Not set';
 
     document.getElementById('origin-text').textContent = origin; 
     document.getElementById('destination-text').textContent = destination;
-
-    // route
+    
     calculateAndDisplayRoute();
 }
 
@@ -77,20 +65,15 @@ function calculateAndDisplayRoute() {
     directionsService.route({
         origin: origin,
         destination: destination,
-        travelMode: 'WALKING' //MODE , mporei na to allaksw se driving alla allazw kai to threshold
+        travelMode: 'WALKING' 
     }, function (response, status) {
         if (status === 'OK') {
             directionsRenderer.setDirections(response);
             var route = response.routes[0];
-
-          // emfanish step sto text view gia ta steps
             if (route.legs[0].steps.length > 0) {
                 var totalSteps = route.legs[0].steps.length;
-                displayNextStep(route.legs[0].steps[currentStepIndex], totalSteps);
-                
+                displayNextStep(route.legs[0].steps[currentStepIndex], totalSteps); 
             }
-
-            // user tracking
             trackUserProgress(route);
         } else {
             window.alert('Directions request failed due to ' + status);
@@ -98,7 +81,6 @@ function calculateAndDisplayRoute() {
     });
 }
 
-//emfanish epomenou step
 function displayNextStep(step, totalSteps) {
     var directionsPanel = document.getElementById('directions-panel');
     if (directionsPanel) {
@@ -109,40 +91,30 @@ function displayNextStep(step, totalSteps) {
 
 function handleStep(step) {
     if (!step) return;
-
-    var instruction = step.instructions.replace(/<[^>]+>/g, '').toLowerCase(); //kane replace ta sumvola me keno
-
-    // Patterns analoga me to step
+    var instruction = step.instructions.replace(/<[^>]+>/g, '').toLowerCase(); 
+    
     if (instruction.includes("turn left")) {
         triggerVibration([100, 50, 100, 50, 300]);
-
     } else if (instruction.includes("turn right")) {
         triggerVibration([300, 50, 100, 50, 100]);
-
     } else if (instruction.includes("east")) {
         triggerVibration([100,50]); 
-
     } else if (instruction.includes("west")) {
         triggerVibration([100, 100, 100]); 
-        
     } else if (instruction.includes("north")) {
         triggerVibration([150, 200, 150, 200, 150]); 
-
     } else if (instruction.includes("south")) {
         triggerVibration([200, 25, 200, 25, 200]); 
     }
-
 }
 
-
-// Track user 
 function trackUserProgress(route) {
     console.log("Tracking user progress");
     if (navigator.geolocation) {
         navigator.geolocation.watchPosition(function (position) {
             var userLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             var routeSteps = route.legs[0].steps;
-            const NEXT_STEP_THRESHOLD_DISTANCE = 10; // 10 metra gia to epomeno step
+            const NEXT_STEP_THRESHOLD_DISTANCE = 10; 
 
             console.log("User location updated: ", userLocation);
 
@@ -159,20 +131,16 @@ function trackUserProgress(route) {
             }
             if (userLocationMarker) {
                 userLocationMarker.setPosition(userLocation);
-                
             }
-
 
             var destinationLocation = new google.maps.LatLng(route.legs[0].end_location.lat(), route.legs[0].end_location.lng());
             var distanceToDestination = google.maps.geometry.spherical.computeDistanceBetween(userLocation, destinationLocation);
 
-            const DESTINATION_THRESHOLD_DISTANCE = 5; // gia otan ftasei ston proorismo
+            const DESTINATION_THRESHOLD_DISTANCE = 5; 
             if (distanceToDestination < DESTINATION_THRESHOLD_DISTANCE) {
-                showArrivalMessage(); //pop up oti eftase
+                showArrivalMessage(); 
             }
-
-            startStepCheckInterval(routeSteps); //gia ta vibrations
-
+            startStepCheck(routeSteps); 
         }, function (error) {
             console.error("Error occurred: " + error.message);
         }, { enableHighAccuracy: true });
@@ -181,11 +149,10 @@ function trackUserProgress(route) {
     }
 }
 
-function startStepCheckInterval(routeSteps) { 
+function startStepCheck(routeSteps) { 
     checkStepState(routeSteps);
 }
 
-//tsekare step kai kalese ton handler
 function checkStepState(routeSteps) {
     if (currentStepIndex < routeSteps.length) {
         var currentStep = routeSteps[currentStepIndex];
@@ -193,25 +160,18 @@ function checkStepState(routeSteps) {
     }
 }
 
-
-// pop up gia otan ftasei
 function showArrivalMessage() {
     triggerVibration(600);
     var popup = document.getElementById("popup");
     popup.classList.add("open-popup");
 }
 
-
-
-
-// Vibration fun
 function triggerVibration(duration) {
     if ("vibrate" in navigator) {
         navigator.vibrate(duration);
     }
 }
 
-// Close popup
 function closePopup() {
     triggerVibration(50);
     var Popup = document.getElementById("popup");
