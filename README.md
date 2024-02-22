@@ -1,7 +1,7 @@
-# Vibration-Based Navigation System for the Visually Impaired
+# Vibration-Based Navigation System 
 
 ## Project Overview
-This project introduces a web-based navigation system designed to assist visually impaired users in navigating through urban environments using vibration feedback. By leveraging Google Maps API for routing and the Web Speech API for voice recognition, the system provides an intuitive and accessible way for users to set their destination and receive turn-by-turn navigation instructions through unique vibration patterns.
+This project introduces a web-based navigation system designed to assist individuals with visual and hearing impairments in navigating through urban environments using vibration feedback. By leveraging Google Maps API for routing and the Web Speech API for voice recognition, the system provides an intuitive and accessible way for users to set their destination and receive turn-by-turn navigation instructions through unique vibration patterns.
 
 ## Key Features
 
