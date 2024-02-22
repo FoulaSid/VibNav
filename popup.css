@@ -1,0 +1,67 @@
+.popup{
+  width: 250px;
+  height: 350px;
+  border-radius: 10px ;
+  background: #e7cbff;
+  position: absolute;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%,-50%)scale(0.1);
+  text-align: center;
+  padding: 0 30px 30px;
+  color: #0e0b0b;
+  visibility: hidden;
+  transition: transform 0.4s, top 0.4s;
+  box-shadow: 0 0 10px #0e0b0b;
+
+}
+/* for the script */
+.open-popup{
+  visibility: visible;
+  top: 50%;
+  transform: translate(-50%,-50%)scale(1);
+}
+
+
+.popup img{
+  margin-top: 10px;
+}
+
+.popup h2{
+  font-size: 38px;
+  font-weight: 500;
+  margin: 30px 0 10px;
+}
+
+.popup p{
+  font-size: 18px;
+}
+
+#vc-txt
+{
+  font-size: 22px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+
+  
+}
+
+.popup button{
+  width: 100%;
+  margin-top: 40px;
+  padding: 10px;
+  background-color: #ebebeb;
+  border: 0;
+  outline: none;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+.popup button:hover{
+  background-color: rgb(80, 0, 0);
+  transform: scale(1.05); /* Increase the scale on hover */
+  color: #ebebeb;
+}
