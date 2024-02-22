@@ -1,16 +1,13 @@
 function initMap() {
-  //gia autocomplete 
+  //autocomplete 
   var originInput = document.getElementById('origin');
   new google.maps.places.Autocomplete(originInput);
 
   var destinationInput = document.getElementById('destination');
   new google.maps.places.Autocomplete(destinationInput);
-
-
   setUserLocation();
 }
 
-//origin h topothesia tou xrhsth
 function setUserLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -37,40 +34,33 @@ function setUserLocation() {
   }
 }
 
-//kleise pop up
 function closePopup() {
   var Popup = document.getElementById("popup");
   Popup.classList.remove("open-popup");
 }
 
-//kleise to failed pop up
 function closeFailedPopup() {
   triggerVibration(50);
   var Popup = document.getElementById("failed");
   Popup.classList.remove("open-popup");
 }
 
-//anoikse pop up
-function openPopup()
-{
+function openPopup() {
   var popup = document.getElementById("popup");
   popup.classList.add("open-popup");
 }
 
-//anoikse to failed pop up
-function openFailedPopup()
-{
+function openFailedPopup() {
   var popup = document.getElementById("failed");
   popup.classList.add("open-popup");
 }
 
-//anagnwrish fwnhs
 function voiceRecognition() {
   if ('webkitSpeechRecognition' in window) {
     var recognition = new webkitSpeechRecognition();
     recognition.continuous = false;
     recognition.interimResults = false;
-    recognition.lang = 'el-GR';
+    recognition.lang = 'el-GR'; //greek words
     triggerVibration(200);
 
     var recognitionTimeout;
@@ -78,17 +68,15 @@ function voiceRecognition() {
     recognition.onstart = function() {
       document.getElementById('vc-txt').textContent = ""; 
       openPopup(); 
-
-      // stamata meta apo 5 secs
       recognitionTimeout = setTimeout(function() {
         recognition.stop();
-      }, 5000); // 5 secs
+      }, 5000); 
     };
 
     recognition.onresult = function(event) {
       clearTimeout(recognitionTimeout); //clear timeout
       var transcript = event.results[0][0].transcript;
-      document.getElementById('vc-txt').textContent = "'" + transcript + "'"; //pass auto pou eipe
+      document.getElementById('vc-txt').textContent = "'" + transcript + "'";
       document.getElementById('vc-txt').style.color = "green";
       document.getElementById('destination').value = transcript;
     };
@@ -109,36 +97,26 @@ function voiceRecognition() {
   }
 }
 
-
-
-//vibration fun
- function triggerVibration(duration) 
- {
+ function triggerVibration(duration) {
   if ("vibrate" in navigator) {
     navigator.vibrate(duration);
     }
 }
 
-
 function startNavigation() {
   var origin = document.getElementById('origin').value;
   var destination = document.getElementById('destination').value;
-  if(origin.trim() !== "" && destination.trim() !== "") //elegxos an sumplhrwse ta stoixeia
-  {
+  if(origin.trim() !== "" && destination.trim() !== "") {
     triggerVibration(500);
     saveInput();
     window.location.href='map.html'
   }
-  else
-  {
+  else{
     triggerVibration(900);
     openFailedPopup();
   }
-
-
 }
 
-//local storage gia na ginoun pass sto allo html me ton xarth
 function saveInput() {
   var origin = document.getElementById('origin').value;
   var destination = document.getElementById('destination').value;
@@ -146,8 +124,7 @@ function saveInput() {
   localStorage.setItem('origin', origin);
   localStorage.setItem('destination', destination);
 }
+
 window.onload = function() {
   initMap();
 };
-
-
