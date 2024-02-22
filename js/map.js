@@ -122,7 +122,7 @@ function handleStep(step) {
     } else if (instruction.includes("turn right")) {
         triggerVibration([300, 50, 100, 50, 100]);
     } else if (instruction.includes("east")) {
-        triggerVibration([100,50]); 
+        triggerVibration([150,50]); 
     } else if (instruction.includes("west")) {
         triggerVibration([100, 100, 100]); 
     } else if (instruction.includes("north")) {
