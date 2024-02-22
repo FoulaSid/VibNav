@@ -8,7 +8,7 @@ Vibration Feedback: Uses distinct vibration patterns to convey different types o
 User Location Detection: Automatically detects and sets the user's current location as the starting point for navigation, simplifying the process of initiating a route.
 Google Maps Integration: Incorporates Google Maps API to provide accurate and reliable routing information.
 
-Getting Started
-Prerequisites
+## Getting Started
+# Prerequisites
 A modern web browser with support for Geolocation API and Web Speech API (e.g., Google Chrome, Mozilla Firefox).
 Internet access to load Google Maps API and other online resources.
