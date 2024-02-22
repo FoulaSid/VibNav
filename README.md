@@ -26,7 +26,7 @@ The Google Maps API key used in this project is restricted to the application's 
 - **Turn Left**: Short vibrations followed by a long vibration.
 - **Turn Right**: A long vibration followed by short vibrations.
 - **North**: A sequence of medium vibrations.
-- **East**: Two short vibrations.
+- **East**: One medium followed by one short vibration
 - **West**: Three short vibrations.
 - **South**: Long vibrations with very short pauses.
 
