@@ -36,11 +36,6 @@ Users need to interact with the device (e.g., touching the screen or pressing a 
   
 ## Contributing
 Contributions to improve the application are welcome. Please follow these steps to contribute:
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/AmazingFeature`).
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
-4. Push to the branch (`git push origin feature/AmazingFeature`).
-5. Open a pull request.
 
 ## Acknowledgments
 - [International Hellenic University](https://ihu.gr) for the support and resources provided during the development of this project.
