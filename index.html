@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navigation App</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/popup.css">
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4XRRMhhdo7GxZCMEYkuKG19S8s8bCR6g&callback=initMap&libraries=places&v=weekly" defer></script>
+
+
+</head>
+<body>
+  <div class="voice-command">
+    <button id="vcbtn" onclick="voiceRecognition()">Voice Command</button>
+  </div>
+  <div class="input-field">
+    <input type="text" id="origin" placeholder="Enter origin" onclick="triggerVibration(100)">
+  </div>
+  <div class="input-field">
+    <input type="text" id="destination" placeholder="Enter destination" onclick="triggerVibration(200)">
+  </div>
+  <div class="start-navigation">
+    <button onclick="startNavigation()">Start Navigation</button>
+  </div>
+
+
+  <div class="popup" id="popup">
+    <img src="./images/microphone.png" width="100px">
+    <h2>Voice Recognition</h2>
+    <p>Please speak now</p>
+    <p id="vc-txt" > </p>
+  </div>
+
+  <div class="popup" id="failed">
+    <img src="./images/error_icon.png" width="100px">
+    <h2 style="font-size: 20px;">Please fill both origin and destination</h2>
+    <button onclick="closeFailedPopup()">OK</button>
+
+  </div>
+
+
+  <script src="js/index.js"></script>
+
+</body>
+
+
+</html>
