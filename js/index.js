@@ -1,10 +1,10 @@
 function initMap() {
-  //autocomplete 
   var originInput = document.getElementById('origin');
   new google.maps.places.Autocomplete(originInput);
 
   var destinationInput = document.getElementById('destination');
   new google.maps.places.Autocomplete(destinationInput);
+  
   setUserLocation();
 }
 
