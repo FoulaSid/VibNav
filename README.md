@@ -41,7 +41,5 @@ Contributions to improve the application are welcome. Please follow these steps 
 5. Open a pull request.
 
 ## Acknowledgments
-- Google Maps API for providing mapping and routing functionalities.
-- Web Speech API for enabling voice recognition features.
 - [International Hellenic University](https://ihu.gr) for the support and resources provided during the development of this project.
 - Special thanks to all individuals involved in the project's development and testing, especially those who provided feedback and insights to enhance the application's accessibility and user experience.
