@@ -9,6 +9,6 @@ User Location Detection: Automatically detects and sets the user's current locat
 Google Maps Integration: Incorporates Google Maps API to provide accurate and reliable routing information.
 
 ## Getting Started
-# Prerequisites
+### Prerequisites
 A modern web browser with support for Geolocation API and Web Speech API (e.g., Google Chrome, Mozilla Firefox).
 Internet access to load Google Maps API and other online resources.
