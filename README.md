@@ -10,7 +10,7 @@ This project introduces a web-based navigation system designed to assist visuall
 - **User Location Detection**: Automatically detects and sets the user's current location as the starting point for navigation, simplifying the process of initiating a route.
 - **Google Maps Integration**: Incorporates Google Maps API to provide accurate and reliable routing information.
 
-## Getting Started
+## Usage
 
 ### Accessing the Application
 You can access the live application by visiting the following URL:
@@ -18,6 +18,7 @@ You can access the live application by visiting the following URL:
 [https://users.iee.ihu.gr/~iee2019149/VibNav/index.html](https://users.iee.ihu.gr/~iee2019149/VibNav/index.html)
 
 Simply open the link in a modern web browser (Google Chrome) to start using the application.
+
 
 ### API Key Restrictions
 The Google Maps API key used in this project is restricted to the application's live version hosted at the above URL. If you wish to run this application locally or host it on a different domain, you will need to obtain your own Google Maps API key and set up the appropriate API restrictions as described in the [Google Cloud Console](https://console.cloud.google.com/).
