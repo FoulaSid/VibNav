@@ -25,7 +25,7 @@ function initMap() {
                     scale: 2 
                 },
                 offset: '0',
-                repeat: '10px' // suxnothta dots
+                repeat: '10px' 
             }]
         }
     });
