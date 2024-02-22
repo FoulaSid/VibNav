@@ -23,6 +23,7 @@ Simply open the link in a modern web browser (Google Chrome) to start using the 
 The Google Maps API key used in this project is restricted to the application's live version hosted at the above URL. If you wish to run this application locally or host it on a different domain, you will need to obtain your own Google Maps API key and set up the appropriate API restrictions as described in the [Google Cloud Console](https://console.cloud.google.com/).
 
 ## Vibration Pattern Guide
+Users need to interact with the device (e.g., touching the screen or pressing a button) to receive vibration feedback due to the "Require user gesture for `navigator.vibrate`" policy in browsers like Google Chrome.
 - **Turn Left**: Short vibrations followed by a long vibration.
 - **Turn Right**: A long vibration followed by short vibrations.
 - **North**: A sequence of medium vibrations.
